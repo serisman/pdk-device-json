@@ -1,0 +1,607 @@
+{
+  "prog": {
+    "id": "0x2a16",
+    "method": "0x12"
+  },
+  "rom": {
+    "type": "OTP",
+    "size": 1024
+  },
+  "ram": {
+    "size": 64
+  },
+  "instrSet": "13 bit",
+  "fppa": {
+    "count": 1
+  },
+  "fuse": {
+    "lowBits": [
+      1,
+      8,
+      12,
+      13,
+      14,
+      15
+    ],
+    "options": [
+      {
+        "name": "Security",
+        "startBit": 0,
+        "numBits": 1,
+        "values": [
+          "Enable",
+          "Disable"
+        ]
+      },
+      {
+        "name": "LVR",
+        "startBit": 2,
+        "numBits": 3,
+        "values": [
+          "4.0V",
+          "3.5V",
+          "3.0V",
+          "2.75V",
+          "2.5V",
+          "1.8V",
+          "2.2V",
+          "2.0V"
+        ]
+      },
+      {
+        "name": "Drive",
+        "startBit": 7,
+        "numBits": 1,
+        "values": [
+          "Low",
+          "Normal"
+        ]
+      },
+      {
+        "name": "Bootup_Time",
+        "startBit": 10,
+        "numBits": 2,
+        "values": [
+          "Slow",
+          "X",
+          "X",
+          "Fast"
+        ]
+      }
+    ]
+  },
+  "registers": [
+    {
+      "name": "BGTR",
+      "address": "0x19",
+      "access": "IO_WO"
+    },
+    {
+      "name": "CLKMD",
+      "address": "0x03",
+      "access": "IO_RW",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 1,
+          "values": [
+            "X",
+            "En_Reset"
+          ]
+        },
+        {
+          "startBit": 1,
+          "numBits": 1,
+          "values": [
+            "X",
+            "En_WatchDog"
+          ]
+        },
+        {
+          "startBit": 2,
+          "numBits": 1,
+          "values": [
+            "X",
+            "En_ILRC"
+          ]
+        },
+        {
+          "startBit": 3,
+          "numBits": 4,
+          "skipBit": 4,
+          "values": [
+            "IHRC/4",
+            "IHRC/16",
+            "IHRC/2",
+            "IHRC/8",
+            "X",
+            "ILRC/16",
+            "X",
+            "IHRC/32",
+            "X",
+            "IHRC/64",
+            "X",
+            "X",
+            "ILRC/4",
+            "X",
+            "ILRC/1"
+          ]
+        },
+        {
+          "startBit": 4,
+          "numBits": 1,
+          "values": [
+            "X",
+            "En_IHRC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EOSCR",
+      "address": "0x0A",
+      "access": "IO_WR",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 1,
+          "values": [
+            "X",
+            "DIS_LVD_BANDGAP"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FLAG",
+      "address": "0x00",
+      "access": "IO_RW"
+    },
+    {
+      "name": "GPCC",
+      "address": "0x1A",
+      "access": "IO_RW",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 1,
+          "values": [
+            "P_R",
+            "P_PA4"
+          ]
+        },
+        {
+          "startBit": 1,
+          "numBits": 3,
+          "values": [
+            "N_PA3",
+            "N_PA4",
+            "BANDGAP",
+            "N_R",
+            "N_PA6(N_PB6)",
+            "N_PA7(N_PB7)"
+          ]
+        },
+        {
+          "startBit": 4,
+          "numBits": 1,
+          "values": [
+            "X",
+            "Inverse"
+          ]
+        },
+        {
+          "startBit": 5,
+          "numBits": 1,
+          "values": [
+            "X",
+            "Sync_TM2"
+          ]
+        },
+        {
+          "startBit": 6,
+          "numBits": 1,
+          "readOnly": true,
+          "values": [
+            "Out_Low",
+            "Out_High"
+          ]
+        },
+        {
+          "startBit": 7,
+          "numBits": 1,
+          "values": [
+            "Disable",
+            "Enable"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GPCS",
+      "address": "0x1E",
+      "access": "IO_WO",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 6
+        },
+        {
+          "startBit": 6,
+          "numBits": 1,
+          "values": [
+            "X",
+            "Wakeup"
+          ]
+        },
+        {
+          "startBit": 7,
+          "numBits": 1,
+          "values": [
+            "X",
+            "Output"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IHRCR",
+      "address": "0x0B",
+      "access": "IO_WO"
+    },
+    {
+      "name": "ILRCR",
+      "address": "0x1F",
+      "access": "IO_WO"
+    },
+    {
+      "name": "INTEGS",
+      "address": "0x0C",
+      "access": "IO_WO",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 2,
+          "values": [
+            "PA0_B",
+            "PA0_R",
+            "PA0_F"
+          ]
+        },
+        {
+          "startBit": 0,
+          "numBits": 2,
+          "values": [
+            "PA0_B",
+            "PA0_R",
+            "PA0_F"
+          ]
+        },
+        {
+          "startBit": 4,
+          "numBits": 1,
+          "values": [
+            "BIT_R",
+            "BIT_F"
+          ]
+        },
+        {
+          "startBit": 6,
+          "numBits": 2,
+          "values": [
+            "Both",
+            "Rising",
+            "Falling"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "INTEN",
+      "address": "0x04",
+      "access": "IO_RW",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 1,
+          "values": [
+            "X",
+            "PA0"
+          ]
+        },
+        {
+          "startBit": 2,
+          "numBits": 1,
+          "values": [
+            "X",
+            "T16"
+          ]
+        },
+        {
+          "startBit": 4,
+          "numBits": 1,
+          "values": [
+            "X",
+            "COMP"
+          ]
+        },
+        {
+          "startBit": 6,
+          "numBits": 1,
+          "values": [
+            "X",
+            "TM2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "INTRQ",
+      "address": "0x05",
+      "access": "IO_RXW",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 1,
+          "values": [
+            "X",
+            "PA0"
+          ]
+        },
+        {
+          "startBit": 2,
+          "numBits": 1,
+          "values": [
+            "X",
+            "T16"
+          ]
+        },
+        {
+          "startBit": 4,
+          "numBits": 1,
+          "values": [
+            "X",
+            "COMP"
+          ]
+        },
+        {
+          "startBit": 6,
+          "numBits": 1,
+          "values": [
+            "X",
+            "TM2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MISC",
+      "address": "0x1B",
+      "access": "IO_WO",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 2,
+          "values": [
+            "WT_T32 | WDT_8K",
+            "WT_T64 | WDT_16K",
+            "WT_T256 | WDT_64K",
+            "WT_T1K | WDT_256K"
+          ]
+        },
+        {
+          "startBit": 2,
+          "numBits": 1,
+          "values": [
+            "X",
+            "LVR_Disable"
+          ]
+        },
+        {
+          "startBit": 5,
+          "numBits": 1,
+          "values": [
+            "X",
+            "Fast_Wake_Up"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PA",
+      "address": "0x10",
+      "access": "IO_RW"
+    },
+    {
+      "name": "PAC",
+      "address": "0x11",
+      "access": "IO_RW"
+    },
+    {
+      "name": "PADIER",
+      "address": "0x0D",
+      "access": "IO_WR"
+    },
+    {
+      "name": "PAPH",
+      "address": "0x12",
+      "access": "IO_RW"
+    },
+    {
+      "name": "SP",
+      "address": "0x02",
+      "access": "IO_RW"
+    },
+    {
+      "name": "T16M",
+      "address": "0x06",
+      "access": "IO_RW",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 3,
+          "values": [
+            "BIT8",
+            "BIT9",
+            "BIT10",
+            "BIT11",
+            "BIT12",
+            "BIT13",
+            "BIT14",
+            "BIT15"
+          ]
+        },
+        {
+          "startBit": 3,
+          "numBits": 2,
+          "values": [
+            "/1",
+            "/4",
+            "/16",
+            "/64"
+          ]
+        },
+        {
+          "startBit": 5,
+          "numBits": 3,
+          "values": [
+            "STOP",
+            "SYSCLK",
+            "X",
+            "PA4_F",
+            "IHRC",
+            "X",
+            "ILRC",
+            "PA0_F"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TM2B",
+      "address": "0x09",
+      "access": "IO_WO"
+    },
+    {
+      "name": "TM2C",
+      "address": "0x1C",
+      "access": "IO_RW",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 1,
+          "values": [
+            "X",
+            "Inverse"
+          ]
+        },
+        {
+          "startBit": 1,
+          "numBits": 1,
+          "values": [
+            "Period",
+            "PWM"
+          ]
+        },
+        {
+          "startBit": 2,
+          "numBits": 2,
+          "values": [
+            "Disable",
+            "X",
+            "PA3",
+            "PA4(PB4)"
+          ]
+        },
+        {
+          "startBit": 4,
+          "numBits": 4,
+          "values": [
+            "STOP",
+            "SYSCLK",
+            "IHRC",
+            "X",
+            "ILRC",
+            "GPCRS",
+            "X",
+            "X",
+            "PA0_R",
+            "PA0_F",
+            "X",
+            "X",
+            "PA4_R",
+            "PA4_F"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TM2CT",
+      "address": "0x1D",
+      "access": "IO_RW"
+    },
+    {
+      "name": "TM2S",
+      "address": "0x17",
+      "access": "IO_WO",
+      "settings": [
+        {
+          "startBit": 0,
+          "numBits": 5,
+          "values": [
+            "/1",
+            "/2",
+            "/3",
+            "/4",
+            "/5",
+            "/6",
+            "/7",
+            "/8",
+            "/9",
+            "/10",
+            "/11",
+            "/12",
+            "/13",
+            "/14",
+            "/15",
+            "/16",
+            "/17",
+            "/18",
+            "/19",
+            "/20",
+            "/21",
+            "/22",
+            "/23",
+            "/24",
+            "/25",
+            "/26",
+            "/27",
+            "/28",
+            "/29",
+            "/30",
+            "/31",
+            "/32"
+          ]
+        },
+        {
+          "startBit": 5,
+          "numBits": 2,
+          "values": [
+            "/1",
+            "/4",
+            "/16",
+            "/64"
+          ]
+        },
+        {
+          "startBit": 7,
+          "numBits": 1,
+          "values": [
+            "8BIT",
+            "6BIT"
+          ]
+        }
+      ]
+    }
+  ]
+}

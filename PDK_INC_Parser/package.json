@@ -1,0 +1,14 @@
+{
+  "name": "PDK_INC_Parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parse_inc.js",
+  "author": "Stephen Erisman <github@serisman.com>",
+  "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "linebyline": "^1.3.0",
+    "lodash": "^4.17.15"
+  }
+}
