@@ -1,7 +1,6 @@
 const _ = require('lodash');
 const fs = require('fs');
-const stream = require('stream');
-const util = require('util');
+const events = require('events');
 const readline = require('linebyline');
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
@@ -27,8 +26,6 @@ const destObject = {
   registers: [],
   //peripherals: [],
 };
-
-const streamFinished = util.promisify(stream.finished);
 
 async function main() {
   if (options.help) {
@@ -138,7 +135,7 @@ async function main() {
     }
   });
 
-  await streamFinished(srcFile);
+  await events.once(srcFile, 'end');
 
   if (registerValue) {
     addRegisterValues(prevRegister, registerValue);
@@ -359,6 +356,9 @@ function getNumBitsByLength(length) {
 }
 
 main()
+  .then(() => {
+    console.log('Done.');
+  })
   .catch(err => {
     console.error(err);
   });
